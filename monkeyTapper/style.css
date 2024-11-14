@@ -1,12 +1,20 @@
+:root {
+    --dark-blue: #003c71;
+    --blue: #296cf6;
+    --transparent-blue: rgb(0 37 85 / 0.8);
+    --white: #ffffff;
+    --yellow: #fff400;
+}
+
 header {
-    background-color: #003c71;
+    background-color: var(--dark-blue);
     position: absolute;
     top: 0;
     width: 100%;
 }
 
 body {
-    background-color: white;
+    background-color: var(--white);
 }
 
 footer {
@@ -15,6 +23,6 @@ footer {
 
 #title {
     font-family: Verdana, Geneva, Tahoma, sans-serif;
-    color: white;
+    color: var(--white);
     text-align: center;
 }
