@@ -1,3 +1,13 @@
+* {
+    box-sizing: border-box;
+}
+
+html, body {
+    margin: 0;
+    padding: 0;
+    height: 100%
+}
+
 :root {
     --dark-blue: #003c71;
     --blue: #296cf6;
@@ -15,10 +25,18 @@ header {
 
 body {
     background-color: var(--white);
+    display: flex;
+    flex-direction: column;
+}
+
+main {
+    flex: 1;
 }
 
 footer {
-
+    background-color: var(--dark-blue);
+    text-align: center;
+    padding: 10px;
 }
 
 #title {
