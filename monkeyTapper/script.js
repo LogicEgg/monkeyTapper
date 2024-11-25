@@ -27,6 +27,7 @@ async function sentence() {
     const randWords = words.sort(() => 0.5 - Math.random()).slice(0, 30).join(" ");
     return randWords;
 }
+sentence();
 
 setTimeout(() => {
     const g = document.querySelector('#words');
