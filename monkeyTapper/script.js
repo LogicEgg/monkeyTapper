@@ -22,6 +22,11 @@ async function addDiv() {
 }
 addDiv();
 
+async function sentence() {
+    const words = await stealText();
+    const randWords = words.sort(() => 0.5 - Math.random()).slice(0, 30).join(" ")
+}
+
 setTimeout(() => {
     const g = document.querySelector('#words');
     const content = g.querySelector('p').textContent
