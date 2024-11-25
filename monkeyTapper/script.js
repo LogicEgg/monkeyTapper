@@ -6,6 +6,8 @@ async function stealText() {
     // console.log(text);
 }
 
+stealText();
+
 async function addDiv() {
     const newdiv = document.createElement('div');
     newdiv.setAttribute('id', 'words');
@@ -19,3 +21,9 @@ async function addDiv() {
     document.getElementById('words').style.display='none';
 }
 addDiv();
+
+setTimeout(() => {
+    const g = document.querySelector('#words');
+    const content = g.querySelector('p').textContent
+    console.log(content);
+}, 1500);
