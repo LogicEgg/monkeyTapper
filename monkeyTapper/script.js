@@ -37,7 +37,13 @@ async function getWords() {
         wordlist += array[word] + ' ';
     }
     console.log(wordlist);
+
+    const box = document.querySelector('#box');
+    box.textContent = wordlist;
+
+
     return wordlist;
 }
+
 
 getWords();
