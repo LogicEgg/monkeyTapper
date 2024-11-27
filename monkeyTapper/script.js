@@ -6,8 +6,6 @@ async function stealText() {
     // console.log(text);
 }
 
-stealText();
-
 async function addDiv() {
     const newdiv = document.createElement('div');
     newdiv.setAttribute('id', 'words');
@@ -20,17 +18,29 @@ async function addDiv() {
     document.body.appendChild(newdiv);
     document.getElementById('words').style.display='none';
 }
-addDiv();
 
-async function sentence() {
-    const words = await stealText();
-    const randWords = words.sort(() => 0.5 - Math.random()).slice(0, 30).join(" ");
-    return randWords;
-}
-sentence();
+// setTimeout(() => {
+//     const g = document.querySelector('#words');
+//     const content = g.querySelector('p').textContent;
+//     console.log(content);
+// }, 1500);
 
-setTimeout(() => {
+async function getWords() {
+    await addDiv();
     const g = document.querySelector('#words');
-    const content = g.querySelector('p').textContent
-    console.log(content);
-}, 1500);
+    const words = g.querySelector('p').textContent;
+    const array = words.split('\r\n');
+    // console.log(array);
+    let wordlist = ''
+    for (let i = 0; i < 300; i++) {
+        var word = Math.floor(Math.random() * array.length);
+        wordlist += array[word] + ' ';
+    }
+    console.log(wordlist);
+    return wordlist;
+}
+
+getWords();
+
+// var howMany = prompt('Pick the number of words to type: ', '0')
+// var num = parseInt(howMany)
