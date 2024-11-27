@@ -41,6 +41,3 @@ async function getWords() {
 }
 
 getWords();
-
-// var howMany = prompt('Pick the number of words to type: ', '0')
-// var num = parseInt(howMany)
