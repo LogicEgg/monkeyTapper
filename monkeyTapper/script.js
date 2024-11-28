@@ -44,3 +44,24 @@ async function getWords() { //gives us a list of words
 
     return wordlist;
 }
+document.addEventListener("DOMContentLoaded", function() {
+    let startTime = 60;
+
+    const countDown = document.getElementById('countdown');
+
+    const timer = setInterval(updateCount, 1000);
+
+    function updateCount() {
+        if (startTime <= 0) {
+            clearInterval(timer);
+            countDown.innerHTML = "Time's up!";
+            return;
+        }
+
+        let minutes = Math.floor(startTime / 60);
+        let seconds = startTime % 60;
+
+        countDown.innerHTML = `${minutes}:${seconds < 10 ? '0' + seconds : seconds}`;
+        startTime--;
+    }
+});
