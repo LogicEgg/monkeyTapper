@@ -46,15 +46,32 @@ async function getWords() { //gives us a list of words
 }
 document.addEventListener("DOMContentLoaded", function() {
     let startTime = 60;
+    let wordsTyped = 0; 
+    let wordlist = '';   
+    let timer;
 
     const countDown = document.getElementById('countdown');
+    const typingBox = document.getElementById('typing-box');  
+    const box = document.getElementById('box');
 
-    const timer = setInterval(updateCount, 1000);
+    getWords().then((words) => {
+        wordlist = words;
+    });
+
+    typingBox.addEventListener('input', () => {
+        const text = typingBox.value.trim();
+        wordsTyped = text.split(/\s+/).length;  
+    });
+
+    timer = setInterval(updateCount, 1000);
 
     function updateCount() {
         if (startTime <= 0) {
             clearInterval(timer);
             countDown.innerHTML = "Time's up!";
+            
+            alert(`You typed ${wordsTyped} words. Your WPM is: ${wordsTyped}`);
+
             return;
         }
 
