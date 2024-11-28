@@ -53,4 +53,3 @@ function startGame() {
     box.addEventListener('input', (e) => {
         const typed = e.target.innerText.trim();
         const currentWord = words[currentWord];
-
