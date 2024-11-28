@@ -1,4 +1,4 @@
-async function stealText() { //this function fetches a list of words from another website
+async function stealText() {
     let url = 'https://raw.githubusercontent.com/dwyl/english-words/refs/heads/master/words_alpha.txt';
     stolen = await fetch(url);
     text = await stolen.text();
@@ -6,17 +6,17 @@ async function stealText() { //this function fetches a list of words from anothe
     // console.log(text);
 }
 
-async function addDiv() { //this function creates a new div with the id 'words' and creates a 'p' element populated by the words from the stealText function
-    const newdiv = document.createElement('div'); //div created here
-    newdiv.setAttribute('id', 'words'); //the div is given an id of 'words'
-    let words = await stealText(); //awaits the stealText function
-    words.forEach(word => { //adds each word to the new div in a 'p' element
+async function addDiv() {
+    const newdiv = document.createElement('div');
+    newdiv.setAttribute('id', 'words');
+    let words = await stealText();
+    words.forEach(word => {
         const wordElement = document.createElement('p');
         wordElement.textContent = word;
         newdiv.appendChild(wordElement);
     });
     document.body.appendChild(newdiv);
-    document.getElementById('words').style.display='none'; //hides the new div
+    document.getElementById('words').style.display='none';
 }
 
 // setTimeout(() => {
@@ -25,26 +25,27 @@ async function addDiv() { //this function creates a new div with the id 'words' 
 //     console.log(content);
 // }, 1500);
 
-async function getWords() { //gives us a list of words
-    await addDiv(); //awaits the addDiv function because I use DOM to select from the div it creates
+async function getWords() {
+    await addDiv();
     const g = document.querySelector('#words');
     const words = g.querySelector('p').textContent;
-    const array = words.split('\r\n'); //turns the words into an array so that I can iterate through it later
+    const array = words.split('\r\n');
     // console.log(array);
-    let wordlist = '' //an empty string I will add words to later
-    for (let i = 0; i < 300; i++) { //randomly iterates through array 300 times and adds the word in that index to the wordlist string
+    let wordlist = ''
+    for (let i = 0; i < 300; i++) {
         var word = Math.floor(Math.random() * array.length);
         wordlist += array[word] + ' ';
     }
     console.log(wordlist);
-
-    const box = document.querySelector('#box');
-    box.textContent = wordlist;
-
-
+    function add() {
+        const box = document.querySelector('#box');
+        box.textContent = wordlist;
+    }
+    add()
     return wordlist;
 }
 
+<<<<<<< HEAD
 let validWords = []
 
 async function loadValidWords() {
@@ -54,15 +55,16 @@ async function loadValidWords() {
 document.addEventListener("DOMContentLoaded", async function() {
     await loadValidWords();
 
+=======
+getWords();
+
+document.addEventListener("DOMContentLoaded", function() {
+>>>>>>> f1c9c9b553d7e6633c9f811c2b5edc7d86a26f2f
     let startTime = 60;
-    let wordsTyped = 0; 
-    let wordlist = '';   
-    let timer;
 
     const countDown = document.getElementById('countdown');
-    const typingBox = document.getElementById('typing-box');  
-    const box = document.getElementById('box');
 
+<<<<<<< HEAD
     typingBox.value = '';
 
     getWords().then((words) => {
@@ -76,14 +78,14 @@ document.addEventListener("DOMContentLoaded", async function() {
     });
 
     timer = setInterval(updateCount, 1000);
+=======
+    const timer = setInterval(updateCount, 1000);
+>>>>>>> f1c9c9b553d7e6633c9f811c2b5edc7d86a26f2f
 
     function updateCount() {
         if (startTime <= 0) {
             clearInterval(timer);
             countDown.innerHTML = "Time's up!";
-            
-            alert(`You typed ${wordsTyped} words. Your WPM is: ${wordsTyped}`);
-
             return;
         }
 
@@ -94,3 +96,24 @@ document.addEventListener("DOMContentLoaded", async function() {
         startTime--;
     }
 });
+
+setTimeout(() => {
+    const boxContent = document.getElementById('box');
+    const originalText = boxContent.textContent;
+    const input = document.getElementById('input');
+    const check = input.textContent;
+    var checkIt = check.split(' ');
+    var originalArray = originalText.split(' ');
+    function checkAccuracy() {      
+        let wrong = 0              
+        for (let i = 0; i < checkIt.length; i++) { // Iterate through both arrays            
+            if (checkIt[i] !== originalArray[i]) {// Compare values at the same index
+            wrong++;  // Increment counter if values are different
+            }
+        }
+        alert(wrong + ' number of words typed incorrectly.' + ' ' + checkIt.length + ' words typed in 60 seconds.');
+        }
+    checkAccuracy();
+    console.log(checkIt);
+    console.log(originalText);
+}, 60000);
