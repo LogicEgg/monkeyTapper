@@ -86,7 +86,9 @@ function startCountdown() {
                     countdownElement.textContent = "Time's up!";
                 }
 
-                end(); // Call the end function when time reaches 0 (assumes end is defined elsewhere).
+                end(); // Call the end function when time reaches 0
+                document.addEventListener('keydown', preventKeyDown, true); // disable key input after time is up to prevent accidentally closing alert
+
             }
         }, 1000); // Execute the function every 1000 milliseconds (1 second).
     }
@@ -132,6 +134,5 @@ function end() {
     checkAccuracy();
     // console.log(checkIt);
     // console.log(originalText);
-    document.addEventListener('keydown', preventKeyDown, true); // disable key input after time is up to prevent accidentally closing alert
 }
 
