@@ -44,17 +44,3 @@ async function getWords() { //gives us a list of words
 
     return wordlist;
 }
-<<<<<<< Updated upstream
-
-function startGame() {
-    const box = document.getElementById('box');
-    const words = box.textContent.trim().split(' ');
-    let currentWord = 0;
-
-    box.addEventListener('input', (e) => {
-        const typed = e.target.innerText.trim();
-        const currentWord = words[currentWord];
-    }
-}
-=======
->>>>>>> Stashed changes
