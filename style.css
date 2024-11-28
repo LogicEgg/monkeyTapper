@@ -10,12 +10,23 @@
     box-sizing: border-box;
 }
 
-html, body {
+html{
     margin: 0;
     padding: 0;
     height: 100%;
     overflow-y: auto;
 }
+
+body {
+    display: flex;
+    flex-direction: column;
+    min-height: 100%;
+    margin: 0;
+    background-image: url(monkey-monkeytype.gif);
+    background-size: 100px;
+    background-repeat: repeat;
+}
+
 
 header {
     background-color: var(--dark-blue);
@@ -24,22 +35,14 @@ header {
     width: 100%;
 }
 
-body {
-    background-image: url(monkey-monkeytype.gif);
-    background-size: 100px;
-    display: flex;
-    flex-direction: column;
-    height: 100%;
-}
-
 main {
     flex: 1;
-    margin: 5%; 
-    padding: 20px; 
+    margin: 20px auto;
+    padding: 20px;
     background-color: var(--grey);
     border-radius: 15px;
     border-style: solid;
-    max-height: calc(100vh - 60px);
+    max-width: 95%;
 }
 
 footer {
@@ -54,7 +57,7 @@ footer {
     text-align: center;
 }
 
-#footerText{
+#footerText {
     font-family: Verdana, Geneva, Tahoma, sans-serif;
     color: var(--white);
     text-align: center;
@@ -80,6 +83,7 @@ footer {
     border: 1px solid #296cf6;
     white-space: pre-wrap;
     overflow: hidden;
+    width: 90%;
     max-width: 900px;
     margin: 10px auto;
     min-height: 250px; 
@@ -97,6 +101,7 @@ footer {
     border: 1px solid #296cf6;
     white-space: pre-wrap;
     overflow: hidden;
+    width: 90%;
     max-width: 900px;
     margin: 10px auto;
     min-height: 75px; 
@@ -105,19 +110,19 @@ footer {
     cursor: text;
 }
 
-
 #countdown {
     position: relative;
     display: flex;
     align-items: center;
     justify-content: center;
-    font-size: 50px;
+    font-size: clamp(20px, 5vw, 50px);
     margin: 2% auto; 
-    height: 8px;
-    width: 450px;
+    width: 90%;
+    max-width: 450px;
     color: red;
     font-family: Verdana, Geneva, Tahoma, sans-serif;
 }
+
 .container-eg-btn-2 {
     font-family: sans-serif;
     display: flex;
@@ -126,26 +131,22 @@ footer {
     align-content: center;
     flex-wrap: wrap;
     margin: 0 auto 10px;
-    padding: .5em;
+    padding: 0.5em;
     line-height: normal;
-}
-.container-eg-btn-2 {
     color: var(--dark-blue);
     background: lightskyblue;
-    margin: 10px;
     padding: 12px 15px;
     border: 2px solid var(--dark-blue);
     text-align: center;
     text-transform: uppercase;
     position: relative; 
-    overflow:hidden; 
-    transition: .3s;
+    overflow: hidden; 
+    transition: 0.3s;
     z-index: 1;
 }
+
 .container-eg-btn-2:hover {
     cursor: pointer;
     color: lightskyblue;
-}
-.container-eg-btn-2:hover{
-    box-shadow: inset 0 3.5em 0 0 var(--dark-blue);   
+    box-shadow: inset 0 3.5em 0 0 var(--dark-blue);
 }
