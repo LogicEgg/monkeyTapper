@@ -47,25 +47,25 @@ async function getWords() {
 
 getWords();
 
-document.addEventListener("DOMContentLoaded", function() {
+document.addEventListener("DOMContentLoaded", function() { //Waits for the whole DOM content to be loaded before running the script
     let startTime = 60;
 
     const countDown = document.getElementById('countdown');
 
-    const timer = setInterval(updateCount, 1000);
+    const timer = setInterval(updateCount, 1000); //Set an interval to call the updateCount funciton every 1000 milliseconds
 
-    function updateCount() {
+    function updateCount() { //funciton to update timer
         if (startTime <= 0) {
-            clearInterval(timer);
-            countDown.innerHTML = "Time's up!";
+            clearInterval(timer); //stops interval when timer is done
+            countDown.innerHTML = "Time's up!"; //updates the timer element with "Time's up!"
             return;
         }
 
-        let minutes = Math.floor(startTime / 60);
-        let seconds = startTime % 60;
+        let minutes = Math.floor(startTime / 60); //Gets the number of minutes
+        let seconds = startTime % 60; //Gets the number of seconds
 
-        countDown.innerHTML = `${minutes}:${seconds < 10 ? '0' + seconds : seconds}`;
-        startTime--;
+        countDown.innerHTML = `${minutes}:${seconds < 10 ? '0' + seconds : seconds}`; //format the countdown to display minutes and seconds
+        startTime--; //decreases the countdown time by 1 second
     }
 });
 
