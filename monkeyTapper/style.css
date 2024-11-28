@@ -118,3 +118,34 @@ footer {
     color: red;
     font-family: Verdana, Geneva, Tahoma, sans-serif;
 }
+.container-eg-btn-2 {
+    font-family: sans-serif;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    align-content: center;
+    flex-wrap: wrap;
+    margin: 0 auto 10px;
+    padding: .5em;
+    line-height: normal;
+}
+.container-eg-btn-2 {
+    color: var(--dark-blue);
+    background: lightskyblue;
+    margin: 10px;
+    padding: 12px 15px;
+    border: 2px solid var(--dark-blue);
+    text-align: center;
+    text-transform: uppercase;
+    position: relative; 
+    overflow:hidden; 
+    transition: .3s;
+    z-index: 1;
+}
+.container-eg-btn-2:hover {
+    cursor: pointer;
+    color: lightskyblue;
+}
+.container-eg-btn-2:hover{
+    box-shadow: inset 0 3.5em 0 0 var(--dark-blue);   
+}
