@@ -1,3 +1,11 @@
+:root {
+    --dark-blue: #003c71;
+    --blue: #296cf6;
+    --transparent-blue: rgb(0 37 85 / 0.8);
+    --white: #ffffff;
+    --grey: #e0e0e0;
+}
+
 * {
     box-sizing: border-box;
 }
@@ -7,14 +15,6 @@ html, body {
     padding: 0;
     height: 100%;
     overflow-y: auto;
-}
-
-:root {
-    --dark-blue: #003c71;
-    --blue: #296cf6;
-    --transparent-blue: rgb(0 37 85 / 0.8);
-    --white: #ffffff;
-    --grey: #e0e0e0;
 }
 
 header {
