@@ -44,7 +44,16 @@ async function getWords() { //gives us a list of words
 
     return wordlist;
 }
-document.addEventListener("DOMContentLoaded", function() {
+
+let validWords = []
+
+async function loadValidWords() {
+    validWords = await stealText();
+}
+
+document.addEventListener("DOMContentLoaded", async function() {
+    await loadValidWords();
+
     let startTime = 60;
     let wordsTyped = 0; 
     let wordlist = '';   
@@ -62,7 +71,8 @@ document.addEventListener("DOMContentLoaded", function() {
 
     typingBox.addEventListener('input', () => {
         const text = typingBox.value.trim();
-        wordsTyped = text.split(/\s+/).length;  
+        const wordsArray = text.split(/\s+/).filter(Boolean);
+        wordsTyped = wordsArray.filter(word => validWords.includes(word)).length;
     });
 
     timer = setInterval(updateCount, 1000);
