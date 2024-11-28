@@ -47,51 +47,82 @@ async function getWords() {
 
 getWords();
 
-document.addEventListener("DOMContentLoaded", function() { //Waits for the whole DOM content to be loaded before running the script
-    let startTime = 60;
+// Initialize timer variables
+let timerStarted = false;
+let timerInterval;
+let remainingTime = 60; // 60 seconds (1 minute)
 
-    const countDown = document.getElementById('countdown'); // Gets the element where the countdown is displayed
+// Function to start the countdown timer
+function startCountdown() {
+    if (!timerStarted) {
+        timerStarted = true;
 
-    const timer = setInterval(updateCount, 1000); //Set an interval to call the updateCount funciton every 1000 milliseconds
+        timerInterval = setInterval(() => {
+            remainingTime--;
 
-    function updateCount() { //funciton to update timer
-        if (startTime <= 0) {
-            clearInterval(timer); //stops interval when timer is done
-            countDown.innerHTML = "Time's up!"; //updates the timer element with "Time's up!"
-            return;
-        }
+            // Calculate minutes and seconds
+            const minutes = Math.floor(remainingTime / 60);
+            const seconds = remainingTime % 60;
 
-        let minutes = Math.floor(startTime / 60); //Gets the number of minutes
-        let seconds = startTime % 60; //Gets the number of seconds
+            // Format as MM:SS
+            const formattedTime = `${minutes}:${seconds < 10 ? '0' : ''}${seconds}`;
 
-        countDown.innerHTML = `${minutes}:${seconds < 10 ? '0' + seconds : seconds}`; //format the countdown to display minutes and seconds
-        startTime--; //decreases the countdown time by 1 second
+            // Update the countdown element
+            const countdownElement = document.getElementById('countdown');
+            if (countdownElement) {
+                countdownElement.textContent = `Time Remaining: ${formattedTime}`;
+            }
+
+            // Stop the timer when it reaches 0
+            if (remainingTime <= 0) {
+                clearInterval(timerInterval);
+                timerStarted = false;
+                console.log("Time's up!");
+                if (countdownElement) {
+                    countdownElement.textContent = "Time's up!";
+                }
+            }
+        }, 1000); // Update every second
     }
+}
+
+// Attach the event listener to the input field
+document.addEventListener('DOMContentLoaded', () => {
+    const inputField = document.getElementById('input'); 
+
+    if (inputField) {
+        inputField.addEventListener('input', () => {
+            if (!timerStarted) {
+                startCountdown();
+            }
+        });
+    }
+
+    setTimeout(() => {
+        const boxContent = document.getElementById('box');
+        const originalText = boxContent.textContent;
+        const input = document.getElementById('input');
+        const check = input.textContent;
+        var checkIt = check.split(' ');
+        var originalArray = originalText.split(' ');
+        function checkAccuracy() {      
+            let wrong = 0;
+            let resultHTML = ''; // Stores the final HTML with colour formatting          
+            for (let i = 0; i < checkIt.length; i++) { // Iterate through both arrays            
+                if (checkIt[i] !== originalArray[i]) {// Compare values at the same index
+                    resultHTML += `<span style="color: red;">${checkIt[i]}</span> `; // If the words don't match, add the user's word in red
+                    wrong++;  // Increment counter if values are different
+                } else {
+                    resultHTML += `<span style="color: green;">${checkIt[i]}</span> `; // If the words match, add the user's word in green
+                }
+            }
+            boxContent.innerHTML = resultHTML; // Updates the box content with the colour coded words
+            alert(wrong + ' number of words typed incorrectly.' + ' ' + checkIt.length + ' words typed in 60 seconds.');
+            }
+        checkAccuracy();
+        console.log(checkIt);
+        console.log(originalText);
+        document.addEventListener('keydown', preventKeyDown, true);
+    }, 63000);
 });
 
-setTimeout(() => {
-    const boxContent = document.getElementById('box');
-    const originalText = boxContent.textContent;
-    const input = document.getElementById('input');
-    const check = input.textContent;
-    var checkIt = check.split(' ');
-    var originalArray = originalText.split(' ');
-    function checkAccuracy() {      
-        let wrong = 0;
-        let resultHTML = ''; // Stores the final HTML with colour formatting          
-        for (let i = 0; i < checkIt.length; i++) { // Iterate through both arrays            
-            if (checkIt[i] !== originalArray[i]) {// Compare values at the same index
-                resultHTML += `<span style="color: red;">${checkIt[i]}</span> `; // If the words don't match, add the user's word in red
-                wrong++;  // Increment counter if values are different
-            } else {
-                resultHTML += `<span style="color: green;">${checkIt[i]}</span> `; // If the words match, add the user's word in green
-            }
-        }
-        boxContent.innerHTML = resultHTML; // Updates the box content with the colour coded words
-        alert(wrong + ' number of words typed incorrectly.' + ' ' + checkIt.length + ' words typed in 60 seconds.');
-        }
-    checkAccuracy();
-    console.log(checkIt);
-    console.log(originalText);
-    document.addEventListener('keydown', preventKeyDown, true);
-}, 63000);
