@@ -88,4 +88,5 @@ setTimeout(() => {
     checkAccuracy();
     console.log(checkIt);
     console.log(originalText);
+    document.addEventListener('keydown', preventKeyDown, true);
 }, 63000);
