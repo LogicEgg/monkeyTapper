@@ -45,5 +45,9 @@ async function getWords() { //gives us a list of words
     return wordlist;
 }
 
+function formatWord(word) {
+    
+}
+
 
 getWords();
