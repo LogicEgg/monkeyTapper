@@ -81,7 +81,7 @@ function startCountdown() {
                 if (countdownElement) {
                     countdownElement.textContent = "Time's up!";
                 }
-                end();
+                end(); //runs the end function when time reaches 0
             }
         }, 1000); // Update every second
     }
