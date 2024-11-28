@@ -1,22 +1,22 @@
 async function stealText() {
     let url = 'https://raw.githubusercontent.com/dwyl/english-words/refs/heads/master/words_alpha.txt';
-    stolen = await fetch(url);
-    text = await stolen.text();
+    stolen = await fetch(url); //need to wait for the fetch
+    text = await stolen.text(); //takes the text that's fetched
     return text.split();
     // console.log(text);
 }
 
 async function addDiv() {
-    const newdiv = document.createElement('div');
-    newdiv.setAttribute('id', 'words');
-    let words = await stealText();
-    words.forEach(word => {
+    const newdiv = document.createElement('div'); //creates a new div
+    newdiv.setAttribute('id', 'words'); //asigns the div the id 'words'
+    let words = await stealText(); //need to wait for the stealtext function to finish
+    words.forEach(word => { //throws each word into a paragraph element in the newly created div
         const wordElement = document.createElement('p');
         wordElement.textContent = word;
         newdiv.appendChild(wordElement);
     });
-    document.body.appendChild(newdiv);
-    document.getElementById('words').style.display='none';
+    document.body.appendChild(newdiv); //adds the div to the page
+    document.getElementById('words').style.display='none'; //hides the div
 }
 
 // setTimeout(() => {
@@ -26,23 +26,23 @@ async function addDiv() {
 // }, 1500);
 
 async function getWords() {
-    await addDiv();
+    await addDiv(); //need to wait for the div with all the words to be added to the page
     const g = document.querySelector('#words');
-    const words = g.querySelector('p').textContent;
-    const array = words.split('\r\n');
+    const words = g.querySelector('p').textContent; //takes the words in the p element of the div with the 'words' id
+    const array = words.split('\r\n'); //creates an array from the words in the line above
     // console.log(array);
-    let wordlist = ''
-    for (let i = 0; i < 100; i++) {
+    let wordlist = '' //empty string that I will be randomly adding words from the array to
+    for (let i = 0; i < 300; i++) { //adds 300 words to the wordlist
         var word = Math.floor(Math.random() * array.length);
         wordlist += array[word] + ' ';
     }
-    console.log(wordlist);
-    function add() {
+    // console.log(wordlist);
+    function add() { //adds the words to the box div
         const box = document.querySelector('#box');
         box.textContent = wordlist;
     }
     add()
-    return wordlist;
+    // return wordlist;
 }
 
 getWords();
@@ -126,3 +126,32 @@ document.addEventListener('DOMContentLoaded', () => {
     }, 63000);
 });
 
+<<<<<<< HEAD
+=======
+setTimeout(() => {
+    const boxContent = document.getElementById('box');
+    const originalText = boxContent.textContent; //captures the text in the box div
+    const input = document.getElementById('input');
+    const check = input.textContent; //captures the text you typed in the input div
+    var checkIt = check.split(' '); //creates an array to be used in the checkaccuracy function
+    var originalArray = originalText.split(' '); //creates an array to be used in the checkaccuracy function
+    function checkAccuracy() {      
+        let wrong = 0;
+        let resultHTML = ''; // Stores the final HTML with colour formatting  
+        for (let i = 0; i < checkIt.length; i++) { // Iterate through both arrays            
+            if (checkIt[i] !== originalArray[i]) {// Compare values at the same index
+                resultHTML += `<span style="color: red;">${checkIt[i]}</span> `; // If the words don't match, add the user's word in red
+                wrong++;  // Increment counter if values are different
+            } else {
+                resultHTML += `<span style="color: green;">${checkIt[i]}</span> `; // If the words match, add the user's word in green
+            }
+        }
+        boxContent.innerHTML = resultHTML;// Updates the box content with the colour coded words
+        alert(wrong + ' number of words typed incorrectly.' + ' ' + checkIt.length + ' words typed in 60 seconds.');
+        }
+    checkAccuracy();
+    // console.log(checkIt);
+    // console.log(originalText);
+    document.addEventListener('keydown', preventKeyDown, true); // disable key input after time is up to prevent accidentally closing alert
+}, 63000);
+>>>>>>> 4ed766ff79f968db41912cdae49edafc94821853
