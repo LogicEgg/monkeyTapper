@@ -152,7 +152,7 @@ footer {
     box-shadow: inset 0 3.5em 0 0 var(--dark-blue);
 }
 
-@media (max-height: 1200px) {
+@media (max-height: 1200px) { /* adjusts box size to make the page fit the screen for devices with 1200px height*/
     #box {
         font-family: 'Roboto Mono', monospace;
         font-size: 18px; 
