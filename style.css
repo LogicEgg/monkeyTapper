@@ -158,3 +158,9 @@ footer {
         max-height: 344px; 
     }
 }
+
+@media (max-height: 1080px) { /* adjusts box size to make the page fit the screen for devices with 1080px height*/
+    #box {
+        max-height: 280px; 
+    }
+}
