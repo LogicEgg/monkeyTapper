@@ -100,14 +100,14 @@ document.addEventListener('DOMContentLoaded', () => {
 
     setTimeout(() => {
         const boxContent = document.getElementById('box');
-        const originalText = boxContent.textContent;
+        const originalText = boxContent.textContent; //captures the text in the box div
         const input = document.getElementById('input');
-        const check = input.textContent;
-        var checkIt = check.split(' ');
-        var originalArray = originalText.split(' ');
+        const check = input.textContent; //captures the text you typed in the input div
+        var checkIt = check.split(' '); //creates an array to be used in the checkaccuracy function
+        var originalArray = originalText.split(' '); //creates an array to be used in the checkaccuracy function
         function checkAccuracy() {      
             let wrong = 0;
-            let resultHTML = ''; // Stores the final HTML with colour formatting          
+            let resultHTML = ''; // Stores the final HTML with colour formatting  
             for (let i = 0; i < checkIt.length; i++) { // Iterate through both arrays            
                 if (checkIt[i] !== originalArray[i]) {// Compare values at the same index
                     resultHTML += `<span style="color: red;">${checkIt[i]}</span> `; // If the words don't match, add the user's word in red
@@ -116,42 +116,14 @@ document.addEventListener('DOMContentLoaded', () => {
                     resultHTML += `<span style="color: green;">${checkIt[i]}</span> `; // If the words match, add the user's word in green
                 }
             }
-            boxContent.innerHTML = resultHTML; // Updates the box content with the colour coded words
+            boxContent.innerHTML = resultHTML;// Updates the box content with the colour coded words
             alert(wrong + ' number of words typed incorrectly.' + ' ' + checkIt.length + ' words typed in 60 seconds.');
             }
         checkAccuracy();
-        console.log(checkIt);
-        console.log(originalText);
-        document.addEventListener('keydown', preventKeyDown, true);
+        // console.log(checkIt);
+        // console.log(originalText);
+        document.addEventListener('keydown', preventKeyDown, true); // disable key input after time is up to prevent accidentally closing alert
     }, 63000);
 });
 
-<<<<<<< HEAD
-=======
-setTimeout(() => {
-    const boxContent = document.getElementById('box');
-    const originalText = boxContent.textContent; //captures the text in the box div
-    const input = document.getElementById('input');
-    const check = input.textContent; //captures the text you typed in the input div
-    var checkIt = check.split(' '); //creates an array to be used in the checkaccuracy function
-    var originalArray = originalText.split(' '); //creates an array to be used in the checkaccuracy function
-    function checkAccuracy() {      
-        let wrong = 0;
-        let resultHTML = ''; // Stores the final HTML with colour formatting  
-        for (let i = 0; i < checkIt.length; i++) { // Iterate through both arrays            
-            if (checkIt[i] !== originalArray[i]) {// Compare values at the same index
-                resultHTML += `<span style="color: red;">${checkIt[i]}</span> `; // If the words don't match, add the user's word in red
-                wrong++;  // Increment counter if values are different
-            } else {
-                resultHTML += `<span style="color: green;">${checkIt[i]}</span> `; // If the words match, add the user's word in green
-            }
-        }
-        boxContent.innerHTML = resultHTML;// Updates the box content with the colour coded words
-        alert(wrong + ' number of words typed incorrectly.' + ' ' + checkIt.length + ' words typed in 60 seconds.');
-        }
-    checkAccuracy();
-    // console.log(checkIt);
-    // console.log(originalText);
-    document.addEventListener('keydown', preventKeyDown, true); // disable key input after time is up to prevent accidentally closing alert
-}, 63000);
->>>>>>> 4ed766ff79f968db41912cdae49edafc94821853
+
