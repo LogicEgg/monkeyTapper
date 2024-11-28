@@ -45,60 +45,68 @@ async function getWords() {
     // return wordlist;
 }
 
-getWords();
+getWords(); // Function call to retrieve or initialize words (assuming it's defined elsewhere).
 
 // Initialize timer variables
-let timerStarted = false;
-let timerInterval;
-let remainingTime = 60; // 60 seconds (1 minute)
+let timerStarted = false; // Tracks whether the countdown timer has started.
+let timerInterval; // Holds the reference to the setInterval function.
+let remainingTime = 60; // Total countdown time in seconds (1 minute).
 
 // Function to start the countdown timer
 function startCountdown() {
+    // Ensure the timer starts only once
     if (!timerStarted) {
-        timerStarted = true;
+        timerStarted = true; // Set the timerStarted flag to true.
 
+        // Start a repeated interval that updates every second
         timerInterval = setInterval(() => {
-            remainingTime--;
+            remainingTime--; // Decrement the remaining time by 1 second.
 
-            // Calculate minutes and seconds
+            // Calculate minutes and seconds from the remaining time
             const minutes = Math.floor(remainingTime / 60);
             const seconds = remainingTime % 60;
 
-            // Format as MM:SS
+            // Format the time as MM:SS (e.g., 0:05 for 5 seconds left)
             const formattedTime = `${minutes}:${seconds < 10 ? '0' : ''}${seconds}`;
 
-            // Update the countdown element
+            // Update the countdown display on the page
             const countdownElement = document.getElementById('countdown');
             if (countdownElement) {
                 countdownElement.textContent = `Time Remaining: ${formattedTime}`;
             }
 
-            // Stop the timer when it reaches 0
+            // Check if the time has reached 0
             if (remainingTime <= 0) {
-                clearInterval(timerInterval);
-                timerStarted = false;
-                console.log("Time's up!");
+                clearInterval(timerInterval); // Stop the timer.
+                timerStarted = false; // Reset the timerStarted flag.
+                console.log("Time's up!"); // Log a message in the console.
+
+                // Update the countdown display to indicate time is up
                 if (countdownElement) {
                     countdownElement.textContent = "Time's up!";
                 }
-                end(); //runs the end function when time reaches 0
+
+                end(); // Call the end function when time reaches 0 (assumes end is defined elsewhere).
             }
-        }, 1000); // Update every second
+        }, 1000); // Execute the function every 1000 milliseconds (1 second).
     }
 }
 
-// Attach the event listener to the input field
+// Attach an event listener to the input field after the DOM is fully loaded
 document.addEventListener('DOMContentLoaded', () => {
-    const inputField = document.getElementById('input'); 
+    const inputField = document.getElementById('input'); // Get the input field element by its ID.
 
     if (inputField) {
+        // Add an event listener for the 'input' event (triggers on any input change)
         inputField.addEventListener('input', () => {
+            // Start the countdown timer if it's not already started
             if (!timerStarted) {
                 startCountdown();
             }
         });
     }
 });
+
 
 function end() {
     const boxContent = document.getElementById('box');
