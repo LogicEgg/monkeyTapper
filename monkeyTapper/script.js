@@ -45,8 +45,14 @@ async function getWords() { //gives us a list of words
     return wordlist;
 }
 
-function formatWord(word) {
-    
+function startGame() {
+    const box = document.getElementById('box');
+    const words = box.textContent.trim().split(' ');
+    let currentWord = 0;
+
+
+
+
 }
 
 
