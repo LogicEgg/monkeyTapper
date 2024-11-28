@@ -50,7 +50,7 @@ getWords();
 document.addEventListener("DOMContentLoaded", function() { //Waits for the whole DOM content to be loaded before running the script
     let startTime = 60;
 
-    const countDown = document.getElementById('countdown');
+    const countDown = document.getElementById('countdown'); // Gets the element where the countdown is displayed
 
     const timer = setInterval(updateCount, 1000); //Set an interval to call the updateCount funciton every 1000 milliseconds
 
