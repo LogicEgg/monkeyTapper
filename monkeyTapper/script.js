@@ -54,6 +54,8 @@ document.addEventListener("DOMContentLoaded", function() {
     const typingBox = document.getElementById('typing-box');  
     const box = document.getElementById('box');
 
+    typingBox.value = '';
+
     getWords().then((words) => {
         wordlist = words;
     });
