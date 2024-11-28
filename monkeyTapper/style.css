@@ -84,7 +84,7 @@ footer {
     max-width: 900px;
     margin: 10px auto;
     min-height: 250px; /* Increased minimum height */
-    max-height: 500px; /* Increased maximum height */
+    max-height: 300px; /* Increased maximum height */
     line-height: 1.8; /* Slightly more line spacing */
     cursor: text;
     color: grey;
