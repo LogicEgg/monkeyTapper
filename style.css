@@ -154,20 +154,6 @@ footer {
 
 @media (max-height: 1200px) { /* adjusts box size to make the page fit the screen for devices with 1200px height*/
     #box {
-        font-family: 'Roboto Mono', monospace;
-        font-size: 18px; 
-        padding: 15px; 
-        background-color: #f4f4f4;
-        border: 1px solid #296cf6;
-        white-space: pre-wrap;
-        overflow: hidden;
-        width: 90%;
-        max-width: 900px;
-        margin: 10px auto;
-        min-height: 250px; 
         max-height: 344px; 
-        line-height: 1.8; 
-        cursor: text;
-        color: grey;
     }
 }
