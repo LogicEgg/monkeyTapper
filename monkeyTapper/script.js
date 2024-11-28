@@ -50,7 +50,7 @@ function startGame() {
     const words = box.textContent.trim().split(' ');
     let currentWord = 0;
 
-
+    box.addEventListener('input', e)
 
 
 }
