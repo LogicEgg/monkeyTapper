@@ -44,6 +44,7 @@ async function getWords() { //gives us a list of words
 
     return wordlist;
 }
+<<<<<<< Updated upstream
 
 function startGame() {
     const box = document.getElementById('box');
@@ -55,3 +56,5 @@ function startGame() {
         const currentWord = words[currentWord];
     }
 }
+=======
+>>>>>>> Stashed changes
