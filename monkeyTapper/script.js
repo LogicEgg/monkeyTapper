@@ -45,42 +45,14 @@ async function getWords() {
     return wordlist;
 }
 
-<<<<<<< HEAD
-let validWords = []
-
-async function loadValidWords() {
-    validWords = await stealText();
-}
-
-document.addEventListener("DOMContentLoaded", async function() {
-    await loadValidWords();
-
-=======
 getWords();
 
 document.addEventListener("DOMContentLoaded", function() {
->>>>>>> f1c9c9b553d7e6633c9f811c2b5edc7d86a26f2f
     let startTime = 60;
 
     const countDown = document.getElementById('countdown');
 
-<<<<<<< HEAD
-    typingBox.value = '';
-
-    getWords().then((words) => {
-        wordlist = words;
-    });
-
-    typingBox.addEventListener('input', () => {
-        const text = typingBox.value.trim();
-        const wordsArray = text.split(/\s+/).filter(Boolean);
-        wordsTyped = wordsArray.filter(word => validWords.includes(word)).length;
-    });
-
-    timer = setInterval(updateCount, 1000);
-=======
     const timer = setInterval(updateCount, 1000);
->>>>>>> f1c9c9b553d7e6633c9f811c2b5edc7d86a26f2f
 
     function updateCount() {
         if (startTime <= 0) {
@@ -116,4 +88,4 @@ setTimeout(() => {
     checkAccuracy();
     console.log(checkIt);
     console.log(originalText);
-}, 60000);
+}, 63000);
