@@ -77,12 +77,17 @@ setTimeout(() => {
     var checkIt = check.split(' ');
     var originalArray = originalText.split(' ');
     function checkAccuracy() {      
-        let wrong = 0              
+        let wrong = 0;
+        let resultHTML = '';             
         for (let i = 0; i < checkIt.length; i++) { // Iterate through both arrays            
             if (checkIt[i] !== originalArray[i]) {// Compare values at the same index
-            wrong++;  // Increment counter if values are different
+                resultHTML += `<span style="color: red;">${checkIt[i]}</span> `;
+                wrong++;  // Increment counter if values are different
+            } else {
+                resultHTML += `<span style="color: green;">${checkIt[i]}</span> `;
             }
         }
+        boxContent.innerHTML = resultHTML;
         alert(wrong + ' number of words typed incorrectly.' + ' ' + checkIt.length + ' words typed in 60 seconds.');
         }
     checkAccuracy();

@@ -55,6 +55,12 @@ footer {
     text-align: center;
 }
 
+#footerText{
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    color: var(--white);
+    text-align: center;
+}
+
 #game {
     line-height: 35px;
     flex-grow: 1; /* Dynamic height adjustment */
