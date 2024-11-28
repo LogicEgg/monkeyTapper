@@ -5,7 +5,8 @@
 html, body {
     margin: 0;
     padding: 0;
-    height: 100%
+    height: 100%;
+    overflow-y: auto;
 }
 
 :root {
@@ -19,7 +20,7 @@ html, body {
 
 header {
     background-color: var(--dark-blue);
-    position: absolute;
+    position: relative; /* Changed from absolute */
     top: 0;
     width: 100%;
 }
@@ -29,14 +30,17 @@ body {
     background-size: 100px;
     display: flex;
     flex-direction: column;
+    height: 100%;
 }
 
 main {
     flex: 1;
-    margin: 10%;
+    margin: 5%; /* Reduced margin */
+    padding: 20px; /* Added padding */
     background-color: var(--grey);
     border-radius: 15px;
     border-style: solid;
+    max-height: calc(100vh - 60px); /* Responsive max-height */
 }
 
 footer {
@@ -53,7 +57,7 @@ footer {
 
 #game {
     line-height: 35px;
-    height: 600px;
+    flex-grow: 1; /* Dynamic height adjustment */
     overflow: hidden;
 }
 
@@ -65,47 +69,47 @@ footer {
 
 #box {
     font-family: 'Roboto Mono', monospace;
-    font-size: 24px;
-    padding: 10px;
+    font-size: 28px; /* Slightly larger font for better readability */
+    padding: 15px; /* Increased padding */
     background-color: #f4f4f4;
     border: 1px solid #296cf6;
     white-space: pre-wrap;
     overflow: hidden;
     max-width: 900px;
     margin: 10px auto;
-    min-height: 100px;
-    max-height: 420px;
-    line-height: 1.6;
+    min-height: 250px; /* Increased minimum height */
+    max-height: 500px; /* Increased maximum height */
+    line-height: 1.8; /* Slightly more line spacing */
     cursor: text;
     color: grey;
 }
 
 #input {
     font-family: 'Roboto Mono', monospace;
-    font-size: 24px;
-    padding: 10px;
+    font-size: 18px; /* Smaller font size */
+    padding: 8px; /* Reduced padding */
     background-color: #f4f4f4;
     border: 1px solid #296cf6;
     white-space: pre-wrap;
     overflow: hidden;
     max-width: 900px;
     margin: 10px auto;
-    min-height: 125px;
-    max-height: 125px;
-    line-height: 1.6;
+    min-height: 75px; /* Reduced minimum height */
+    max-height: 75px; /* Reduced maximum height */
+    line-height: 1.4; /* Tighter line spacing */
     cursor: text;
 }
 
+
 #countdown {
     position: relative;
-    display: inline-flex;
+    display: flex;
     align-items: center;
     justify-content: center;
     font-size: 50px;
-    margin-top: 5%;
-    margin-left: 5%;
+    margin: 2% auto; /* Reduced margin */
     height: 8px;
-    width: 250px;
+    width: 450px;
     color: yellow;
     font-family: Verdana, Geneva, Tahoma, sans-serif;
 }
