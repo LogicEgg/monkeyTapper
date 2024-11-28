@@ -43,6 +43,7 @@ main {
     border-radius: 15px;
     border-style: solid;
     max-width: 95%;
+    min-width: 50%;
 }
 
 footer {
