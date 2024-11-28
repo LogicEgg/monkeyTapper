@@ -64,6 +64,7 @@ footer {
     background-color: #f4f4f4;
     border: 1px solid #296cf6;
     white-space: pre-wrap;
+    overflow: hidden;
     max-width: 600px;
     margin: 100px auto;
 }
