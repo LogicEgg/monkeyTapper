@@ -74,7 +74,7 @@ footer {
 
 #box {
     font-family: 'Roboto Mono', monospace;
-    font-size: 28px; 
+    font-size: 18px; 
     padding: 15px; 
     background-color: #f4f4f4;
     border: 1px solid #296cf6;
@@ -83,7 +83,7 @@ footer {
     max-width: 900px;
     margin: 10px auto;
     min-height: 250px; 
-    max-height: 325px; 
+    max-height: 525px; 
     line-height: 1.8; 
     cursor: text;
     color: grey;

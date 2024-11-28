@@ -32,7 +32,7 @@ async function getWords() {
     const array = words.split('\r\n');
     // console.log(array);
     let wordlist = ''
-    for (let i = 0; i < 300; i++) {
+    for (let i = 0; i < 100; i++) {
         var word = Math.floor(Math.random() * array.length);
         wordlist += array[word] + ' ';
     }
